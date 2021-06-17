@@ -58,8 +58,8 @@ module.exports = {
             throw new AuthenticationError('action not allowed')
           } 
         } catch(err) {
-          throw new Error(err)
-        }
+            throw new Error(err)
+          }
       }
     }  
 };
