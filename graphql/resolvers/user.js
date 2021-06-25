@@ -53,7 +53,7 @@ module.exports = {
                 username, email, password
             }
         }, context, info) {
-            const { valid, errors } = validatorRegisterInput(username, email, password)
+            const { valid, errors } = validatorRegisterInput(username, email, password);
 
             if(!valid) {
                 throw new UserInputError('Errors', {

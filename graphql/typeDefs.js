@@ -5,15 +5,16 @@ module.exports = gql`
     id: ID!
     amount: String!
     placeName: String!
-    username: String!
     passport: String!
-    persons: Int!
+    persons: String!
+    username: String!
     createdAt: String!
   }
   type User {
     id: ID!
     email: String!
     username: String!
+    password: String!
     token: String!
     createdAt: String!
   }
@@ -21,6 +22,12 @@ module.exports = gql`
     username: String!
     email: String!
     password: String!
+  }
+  input InputPost {
+    amount: String!
+    placeName: String!
+    passport: String!
+    persons: String!
   }
   type Query {
     getPosts: [Post]
@@ -33,10 +40,10 @@ module.exports = gql`
         password: String!
       ): User!
       createPost(
-        placeName: String!,
-        amount: String!,
-        passport: String!,
-        persons: Int!  
+        placeName: String! 
+        amount: String!
+        persons: String! 
+        passport: String!
       ): Post!
       deletePost(postId: ID!): String!
   }

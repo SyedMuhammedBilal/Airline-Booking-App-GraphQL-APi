@@ -27,26 +27,46 @@ module.exports = {
       }
     },
     Mutation: {
-      async createPost(_, { placeName, amount, persons, passport }, context) {
-        const user = checkAuth(context);
-        console.log(user);
+       async createPost(_, { placeName, amount, persons, passport }, context) {
+         const user = checkAuth(context);
+         console.log(user);
 
-        const newPost = new Post({
-          placeName,
-          amount,
-          persons,
-          passport,
-          user: user.id,
-          username: user.username,
-          createdAt: new Date().toISOString()
-        });
+         const newPost = new Post({
+           placeName,
+           amount,
+           persons,
+           passport,
+           user: user.id,
+           username: user.username,
+           createdAt: new Date().toISOString()
+         });
 
-        const post = await newPost.save();
+         const post = await newPost.save();
 
-        return post
+         return post
       },
+      
+    //   async createPost(_, {
+    //     inputPost: {
+    //       placeName, amount, persons, passport
+    //     }
+    // }, info) {
+
+    //     const newPost = new Post({
+    //         placeName, 
+    //         amount, 
+    //         persons,
+    //         passport,
+    //         createdAt: new Date().toISOString()
+    //     });
+
+    //     const post = await newPost.save();
+
+    //     return post
+    // }
+      
       async deletePost(_, { postId }, context) {
-        const user = checkAuth(context);
+        const user = context;
 
         try {
           const post = await Post.findById(postId)

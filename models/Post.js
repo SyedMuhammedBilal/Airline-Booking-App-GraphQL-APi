@@ -4,7 +4,7 @@ const postSchema = new Schema({
   amount: String,
   placeName: String,
   passport: String,
-  persons: Number,
+  persons: String,
   username: String,
   createdAt: String,
   user: {
